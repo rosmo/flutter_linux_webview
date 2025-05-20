@@ -43,6 +43,9 @@ flutter:
   plugin:
     implements: webview_flutter
     platforms:
+      webos:
+        pluginClass: FlutterLinuxWebviewPlugin
+
       linux:
         # This tells the SDK that this class is a plugin entry point for C++.
         # Auto-generated build/linux/flutter/generated_plugin_registrant.cc will
