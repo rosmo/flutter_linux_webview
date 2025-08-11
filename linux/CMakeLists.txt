@@ -207,9 +207,13 @@ function(patch_cef_distrib)
   message(STATUS "[flutter_linux_webview] Patching '${CMAKE_CURRENT_SOURCE_DIR}/${WEBVIEW_CEF_DISTRIB_NAME}/CMakeLists.txt' "
     "so that it builds flutter_webview_subprocess target.")
   execute_process(
-    COMMAND "patch" "--forward" "--backup"
+    COMMAND "patch" "--forward" "--backup" "--fuzz=10"
     ${CMAKE_CURRENT_SOURCE_DIR}/${WEBVIEW_CEF_DISTRIB_NAME}/CMakeLists.txt
-    ${webview_subprocess_source_dir}/cef_distrib_patch/build_flutter_webview_subprocess.patch)
+    ${webview_subprocess_source_dir}/cef_distrib_patch/build_flutter_webview_subprocess.patch
+    RESULT_VARIABLE STATUS OUTPUT_VARIABLE STATUS_ERR ERROR_VARIABLE STATUS_ERR)
+  if(STATUS AND STATUS EQUAL 2)
+    message( FATAL_ERROR "Bad exit status from running patch: ${STATUS_ERR}")
+  endif()
 endfunction(patch_cef_distrib)
 
 patch_cef_distrib()
@@ -328,7 +332,6 @@ function(install_dirs_and_files)
 
   set(CEF_BINARY_FILES
     libcef.so
-    snapshot_blob.bin
     v8_context_snapshot.bin
     libEGL.so
     libGLESv2.so

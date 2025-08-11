@@ -123,7 +123,7 @@ bool get_arg_int64_to_int(FlValue* map,
 // error.
 bool get_arg_int64_to_uint32(FlValue* map,
                              const char* key,
-                             uint32* out,
+                             uint32_t* out,
                              FlMethodResponse** out_error) {
   int64_t buf;
   if (!get_arg_int64(map, key, &buf, out_error)) {
@@ -138,7 +138,7 @@ bool get_arg_int64_to_uint32(FlValue* map,
         nullptr));
     return false;
   }
-  *out = static_cast<uint32>(buf);
+  *out = static_cast<uint32_t>(buf);
   return true;
 }
 
@@ -147,7 +147,7 @@ bool get_arg_int64_to_uint32(FlValue* map,
 // the char16 range. Returns false and outputs |out_error| in case of error.
 bool get_arg_int64_to_char16(FlValue* map,
                              const char* key,
-                             char16* out,
+                             char16_t* out,
                              FlMethodResponse** out_error) {
   int64_t buf;
   if (!get_arg_int64(map, key, &buf, out_error)) {
@@ -162,7 +162,7 @@ bool get_arg_int64_to_char16(FlValue* map,
         nullptr));
     return false;
   }
-  *out = static_cast<char16>(buf);
+  *out = static_cast<char16_t>(buf);
   return true;
 }
 
@@ -446,7 +446,7 @@ static FlMethodResponse* plugin_on_send_mouse_move_async(
   int64_t webviewId;
   int x;
   int y;
-  uint32 modifiers;
+  uint32_t modifiers;
   bool mouseLeave;
 
   if (!get_arg_int64(args, "webviewId", &webviewId, &error_response)) {
@@ -492,7 +492,7 @@ static FlMethodResponse* plugin_on_send_mouse_wheel_async(
   int y;
   int deltaX;
   int deltaY;
-  uint32 modifiers;
+  uint32_t modifiers;
 
   if (!get_arg_int64(args, "webviewId", &webviewId, &error_response)) {
     return error_response;
@@ -538,7 +538,7 @@ static FlMethodResponse* plugin_on_send_mouse_click_async(
   int64_t webviewId;
   int x;
   int y;
-  uint32 modifiers;
+  uint32_t modifiers;
   int mouseButtonType;
   bool mouseUp;
   int clickCount;
@@ -591,12 +591,12 @@ static FlMethodResponse* plugin_on_send_key_async(
 
   int64_t webviewId;
   int keyEventType;
-  uint32 modifiers;
+  uint32_t modifiers;
   int windowsKeyCode;
   int nativeKeyCode;
   bool isSystemKey;
-  char16 character;
-  char16 unmodifiedCharacter;
+  char16_t character;
+  char16_t unmodifiedCharacter;
 
   if (!get_arg_int64(args, "webviewId", &webviewId, &error_response)) {
     return error_response;

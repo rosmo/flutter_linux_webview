@@ -43,7 +43,10 @@
 
 #include "flutter_linux_webview/flutter_webview_types.h"
 #include "flutter_webview_app.h"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Woverloaded-virtual"
 #include "flutter_webview_handler.h"
+#pragma GCC diagnostic pop
 #include "include/base/cef_callback.h"
 #include "include/base/cef_logging.h"
 #include "include/cef_app.h"
@@ -396,7 +399,7 @@ void FlutterWebviewController::CloseBrowser(WebviewId webview_id,
 void FlutterWebviewController::SendMouseMove(WebviewId webview_id,
                                              int x,
                                              int y,
-                                             uint32 modifiers,
+                                             uint32_t modifiers,
                                              bool mouseLeave,
                                              const DoneCBVoid& done_cb) {
   CEF_REQUIRE_UI_THREAD();
@@ -423,7 +426,7 @@ void FlutterWebviewController::SendMouseMove(WebviewId webview_id,
 void FlutterWebviewController::SendMouseWheel(WebviewId webview_id,
                                               int x,
                                               int y,
-                                              uint32 modifiers,
+                                              uint32_t modifiers,
                                               int deltaX,
                                               int deltaY,
                                               const DoneCBVoid& done_cb) {
@@ -451,7 +454,7 @@ void FlutterWebviewController::SendMouseWheel(WebviewId webview_id,
 void FlutterWebviewController::SendMouseClick(WebviewId webview_id,
                                               int x,
                                               int y,
-                                              uint32 modifiers,
+                                              uint32_t modifiers,
                                               int mouseButtonType,
                                               bool mouseUp,
                                               int clickCount,
@@ -496,12 +499,12 @@ void FlutterWebviewController::SendMouseClick(WebviewId webview_id,
 // static
 void FlutterWebviewController::SendKey(WebviewId webview_id,
                                        int keyEventType,
-                                       uint32 modifiers,
+                                       uint32_t modifiers,
                                        int windowsKeyCode,
                                        int nativeKeyCode,
                                        bool isSystemKey,
-                                       char16 character,
-                                       char16 unmodifiedCharacter,
+                                       char16_t character,
+                                       char16_t unmodifiedCharacter,
                                        const DoneCBVoid& done_cb) {
   CEF_REQUIRE_UI_THREAD();
 

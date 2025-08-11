@@ -26,7 +26,10 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Woverloaded-virtual"
 #include "flutter_webview_handler.h"
+#pragma GCC diagnostic pop
 
 #include <GL/gl.h>
 
@@ -87,6 +90,7 @@ FlutterWebviewHandler::FlutterWebviewHandler(
 bool FlutterWebviewHandler::OnBeforePopup(
     CefRefPtr<CefBrowser> browser,
     CefRefPtr<CefFrame> frame,
+    int popup_id,
     const CefString& target_url,
     const CefString& target_frame_name,
     WindowOpenDisposition target_disposition,

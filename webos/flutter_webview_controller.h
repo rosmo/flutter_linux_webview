@@ -40,7 +40,10 @@
 #include <vector>
 
 #include "flutter_linux_webview/flutter_webview_types.h"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Woverloaded-virtual"
 #include "flutter_webview_handler.h"
+#pragma GCC diagnostic pop
 #include "include/cef_render_handler.h"
 
 // Provides the API to control a WebView. Unless otherwise indicated in the
@@ -89,7 +92,7 @@ class FlutterWebviewController {
   static void SendMouseMove(WebviewId webview_id,
                             int x,
                             int y,
-                            uint32 modifiers,
+                            uint32_t modifiers,
                             bool mouseLeave,
                             const DoneCBVoid& done_cb);
 
@@ -97,7 +100,7 @@ class FlutterWebviewController {
   static void SendMouseWheel(WebviewId webview_id,
                              int x,
                              int y,
-                             uint32 modifiers,
+                             uint32_t modifiers,
                              int deltaX,
                              int deltaY,
                              const DoneCBVoid& done_cb);
@@ -106,7 +109,7 @@ class FlutterWebviewController {
   static void SendMouseClick(WebviewId webview_id,
                              int x,
                              int y,
-                             uint32 modifiers,
+                             uint32_t modifiers,
                              int mouseButtonType,
                              bool mouseUp,
                              int clickCount,
@@ -115,12 +118,12 @@ class FlutterWebviewController {
   // Sends a key event to the browser specified by |webview_id|.
   static void SendKey(WebviewId webview_id,
                       int keyEventType,
-                      uint32 modifiers,
+                      uint32_t modifiers,
                       int windowsKeyCode,
                       int nativeKeyCode,
                       bool isSystemKey,
-                      char16 character,
-                      char16 unmodifiedCharacter,
+                      char16_t character,
+                      char16_t unmodifiedCharacter,
                       const DoneCBVoid& done_cb);
 
   // Sets the rendering resolution of the browser with |webview_id| to |width|

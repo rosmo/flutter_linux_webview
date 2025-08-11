@@ -1,15 +1,6 @@
---- CMakeLists.txt
-+++ CMakeLists.txt
-@@ -133,7 +133,7 @@
- #
- 
- # For VS2019 and Xcode 12+ support.
--cmake_minimum_required(VERSION 3.19)
-+cmake_minimum_required(VERSION 3.10)
- 
- # Only generate Debug and Release configuration types.
- set(CMAKE_CONFIGURATION_TYPES Debug Release)
-@@ -219,6 +219,8 @@
+--- CMakeLists.txt.orig	2025-08-11 17:59:18.678520989 +0200
++++ CMakeLists.txt	2025-08-11 18:00:43.266476902 +0200
+@@ -218,6 +218,8 @@
  # directory.
  add_subdirectory(${CEF_LIBCEF_DLL_WRAPPER_PATH} libcef_dll_wrapper)
  
